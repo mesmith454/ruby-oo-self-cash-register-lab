@@ -1,5 +1,5 @@
 class CashRegister
-    attr_accessor :discount, :total, :items, :last_transaction
+    attr_accessor :discount, :total, :items, :last_transaction, :cart
 
     def initialize(discount = 0)
         self.total= 0
@@ -20,7 +20,6 @@ class CashRegister
     end
 
     def apply_discount
-        # binding.pry
         if self.discount >0
           self.total -= ((self.discount/100.0)*self.total)
           success_message = "After the discount, the total comes to $#{self.total.to_i}."
@@ -39,11 +38,19 @@ class CashRegister
         end
         item_names
     end
+    # def calculate_cost(cart)
+    #     #adds inventory of cart and returns price
+    #     @total = @cart.price.sum
+    #     if @cart.count == 0
+    #         cart.total = 0.0
+    #     end
+    # end
     def void_last_transaction
         @total -= @last_price
-        if @cart.count == 0
-            total= 0.0
-        end
-        total
+        # @cart.calculate_cost
+        # if @cart.count = 0
+        #     @cart.total = 0.0
+        # end
     end
 end
+
